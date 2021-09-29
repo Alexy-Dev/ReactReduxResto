@@ -21,7 +21,7 @@
         border: 1px solid rgba(256,256,256, .2);
         background-color: rgba(0,0,0,.7);
         box-shadow: 0 0 20px rgba(256,256,256, .1);
-        &-title, &-price  {
+        &-title, &-price, &-qtty  {
             width: 250px;
             text-align: center;
             color: #fff;
@@ -46,4 +46,16 @@
         border: 1px solid #fff;
         cursor: pointer;
     }
+}
+.order {
+    position: relative;
+        width: 155px;
+        height: 65px;
+        text-align: center;
+        top: 10px;
+        right: -350px;
+        text-decoration-color: rgb(26, 6, 6);
+        font-size: 20px;
+        border: 1px solid #fff;
+        cursor: pointer;
 }

@@ -11,6 +11,7 @@ export default class RestoService {
 //     }    
 // }
     _apiBase = 'http://localhost:3000';
+    
     async getResource(url) {
         const res = await fetch(`${this._apiBase}${url}`);
         if (!res.ok) {
@@ -31,5 +32,29 @@ export default class RestoService {
             return el.id === +id;
         }) 
         return item;
-    } 
+    }
+    async setOrder(order) {
+        const number = await this.getOrderNumber();
+        const newOrder = {
+            id: number,
+            order: order
+        }
+        const response = await fetch(`${this._apiBase}/orders`, {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(newOrder)
+        });
+        if (!response.ok){
+            throw new Error('json error'); 
+        }
+    }
+
+    async getOrderNumber(){
+        const res = await this.getResource('/orders/');
+        const orderNumber = res.length+1;
+
+        return orderNumber
+    }
 }
